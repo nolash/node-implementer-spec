@@ -1,30 +1,28 @@
-\subsection{bzz}
+\subsection{bzz protocol}
 
-The bzz protocol consists of a single message type; handshake.
+\subsubsection{handshake}
 
 The bzz handshake is the first message to be exchanged between peers after the p2p transport protocol has been successfully negotiated. After the handshake each peer should remember the following data about the other:
 
 \begin{itemize}
-\item Swarm Overlay Address of the peer
-\item Whether the peer is a \emph{light} or \emph{full} node
+\item \texttt{Swarm Overlay Address} of the peer \ref{address}
+\item What \texttt{Capabilities} the peer has advertised \ref{capabilities}
 \end{itemize}
 
-\subsubsection{message}
+\paragraph{message} \label{paragraph:bzz-handshake}
 
 The handshake message consists of four data fields:
 
 \begin{lstlisting}[numbers=none]
-version		= UINT64
+
+Version		= UINT64
 Network ID	= UINT64
 Address data	= ADDRESSPAIR
-Light Node      = BOOL
+Capabilities	= CAPABILITIES
 \end{lstlisting}
 
-\subsubsection{protocol}
+\paragraph{procedure}
 
 Upon connection, the \emph{peer who initiated the connection} sends a handshake message to the other. If a more than one handshake is received from the same peer, the connection \emph{MUST} be dropped.
 
 The peers \emph{MUST} have the same \texttt{Version} and \texttt{Network ID}. If one or both of the fields don't match, the connection \emph{MUST} be dropped.
-
-The \texttt{Light Node} field is a boolean value, indicating whether the node is operating as a Light Node or not.
-

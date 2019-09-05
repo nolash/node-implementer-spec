@@ -3,6 +3,7 @@
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \usepackage{listings}
 \usepackage[T1]{fontenc}
+\usepackage{hyperref}
 \lstset{
 	basicstyle=\footnotesize,
 	numbers=left,
@@ -14,7 +15,7 @@
 }
 \setcounter{secnumdepth}{4}
 
-\date{\today\\ v0.2}
+\date{\today\\ v0.3}
 
 \author{lash}
 \title{Swarm node implementer's specification}
@@ -22,15 +23,21 @@
 
 \maketitle
 
-\section{introduction}
+\section{Introduction}
 
 \input{data.latex}
 
-\section {fundamentals}
+\section{Fundamentals}
 
 \input{address.latex}
 
-\section{protocols} \label{protocols}
+\input{capabilities.latex}
+
+\section{Kademlia} \label{kademlia}
+
+\input{kademlia.latex}
+
+\section{Protocols} \label{protocols}
 
 \input{proto_bzz.latex}
 
@@ -39,6 +46,8 @@
 \newpage
 
 \appendix
+
+\input{a_devp2p.latex}
 
 \input{a_rlp.latex}
 

@@ -1,0 +1,17 @@
+\section{devp2p}
+
+The reference node implementation of Swarm uses \texttt{devp2p} as its underlying peer-to-peer transport layer.
+
+\subsection{address}
+
+Currently the url string representation of the devp2p V4 Enode ID is used for this value. Although this value currently serves no practical purpose within the operations of the Swarm node, the handshake \emph{MUST} fail if the string cannot be parsed as a valid Enode ID. \cite{ETHWIKI:ENODE}
+
+Specifically, this means that in the case of a \texttt{devp2p} implementation of the Swarm node, the \ref{address-pair} definition is constrained to:
+
+\begin{lstlisting}[numbers=none]
+PUBLICKEYHEX = "04" 64HEXDIG
+HOST = IP / FQDN
+ENODEPREFIX = "enode://"
+UNDERLAYADDRESS = ENODEPREFIX PUBLICKEYHEX "@" HOST ":" PORT
+ADDRESSPAIR=2#2list(OVERLAYADDRESS UNDERLAYADDRESS)
+\end{lstlisting}

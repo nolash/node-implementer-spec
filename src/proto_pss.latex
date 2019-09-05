@@ -108,50 +108,11 @@ Handling code \emph{SHOULD} only be registered for one single encryption scheme.
 
 For example, if handler code is registered to messages encrypted with symmetric key $S_1$ and \emph{Topic} $T$, and the node receives a message with topic $T$ encrypted with public key $P_1pub$, and the node knows the private key $P_1priv$, the message \emph{SHOULD NOT} be processed.
 
-\subsubsection{Forwarding}
-
-The rules for message forwarding apply to \emph{all} nodes on the message route. In this document we refer to these nodes \emph{relaying nodes}. This includes the \emph{sender} and any \emph{receiver} nodes.
-
-A node \emph{MUST} always forward a message\footnote{This is done to make it more difficult to determine the true recipient of a message by traffic analysis}, \emph{unless} one of these criteria are fulfilled:
-
-\begin{enumerate}
-\item the address in the \texttt{To}-field of the message is a full 32-byte address, \emph{and} matches fully with the node's Swarm Overlay Address\footnote{In this case the recipient is already fully revealed to anyone observing the traffic}.
-\item the message has been seen already, before a certain period of time has elapsed, currently defined as $10$ seconds. (see \ref{sec:message-digest})
-\item the kademlia of the node can be considered as healthy
-\end{enumerate}
+\subsubsection{Message routing}
 
 \texttt{pss} uses the same kademlia table for routing decisions that the Swarm node uses for content routing. \cite[p. 2]{SWARMNETWORK}
 
 Messages \emph{MUST} only be forwarded to nodes that are running a matching version of \texttt{pss}.
-
-\subsubsection{Routing with full address} \label{sec:routing-with-full-address}
-
-By full address we mean that the \texttt{To}-field on the \texttt{pss} message contains the full 32 bytes of the intended recipient node.
-
-\begin{enumerate}
-\item If the message address falls within the \emph{most proximate bin} of the node, the message should be forwarded to \emph{all} the node's \emph{nearest neighbors}.
-\item Otherwise the node \emph{MUST} attempt to send to exactly \emph{one} peer in the bin that is the closest match to the message.
-\item If this is not successful, the node \emph{MUST} try to forward to each remaining peer in that bin in order from closest to farthest until one is successful.
-\item If this is not successful, the node should keep the message and retry later.
-\end{enumerate}
-
-\subsubsection{Routing with partial address}
-
-\begin{enumerate}
-\item Identify the \emph{farthest} peer that matches the partial address.
-\item If that peer is in the \emph{most proximate bin}, the message should be forwarded to \emph{all} the node's \emph{nearest neighbors}.
-\item Otherwise, if the bitlength of the message address equals the proximity order of its matching bin, the message should be forwarded to \emph{all} peers that are in the matching bin or closer\footnote{Notice that in this context, the matching bin becomes the \emph{most proximate bin}}.
-\item Otherwise the bitlength of the message is \emph{longer} than the promixity order of its matching bin. Then the node \emph{MUST} attempt to send to exactly \emph{one} peer in the bin that is the closest match to the message.
-\item If this is not successful, the node \emph{MUST} try to forward to each remaining peer in that bin in order from closest to farthest until one is successful.
-\item If this is not successful, the node should keep the message and retry later.
-\end{enumerate}
-
-\subsubsection{Routing with empty address}
-
-\begin{enumerate}
-\item Message should be forwarded to \emph{all} peers.
-\item If \emph{none} of the peers can successfully be forwarded to, the node should keep the message an retry later.
-\end{enumerate}
 
 \subsubsection{Message digest} \label{sec:message-digest}
 
@@ -159,6 +120,6 @@ In order to identify messages that have already been seen, a message digest is c
 
 \todo{currently this serialization is based on RLP. This must change}
 
-The digest is the \emph{KECCAK256 hash} of the \texttt{RLP} serialization of the \texttt{To} and \texttt{Payload} fields of the \texttt{pss} message.
+The digest is the \emph{KECCAK256 hash} of the serialization of the message defined as follows:
 
 

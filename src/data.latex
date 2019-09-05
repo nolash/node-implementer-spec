@@ -1,8 +1,8 @@
-\subsection{data representations}
+\subsection{Data representations}
 
 This document uses the \texttt{ABNF} convention for defining data types, as described in the IETF RFC 5234. \cite{IETF:ABNF}
 
-\subsubsection{primitives}
+\subsubsection{Primitives}
 
 The basic identifiers are defined as follows:
 
@@ -21,11 +21,17 @@ BOOL		= BIT
 TIMESTAMP	= UINT32
 \end{lstlisting}
 
-\subsubsection{network specific types}
+\subsubsection{Network specific types}
 
-\todo{add IP FQDN PORT from external rfcs}
+\todo{add IP FQDN PORT LIST from external rfcs}
 
-\subsubsection{rule extension for list definitions} \label{abnf-list-definition}
+\subsubsection{Rule extension for list definitions} \label{abnf-list-definition}
 
-The construct \texttt{LIST} explicitly defines a list of elements. Elements may be of any type, and are separated by spaces. This identifier has implications for the serialization of data. Please refer to the serialization appendices for details and examples of serializations of the data types throughout this document: \ref{rlp}
+The construct \texttt{LIST} explicitly defines a list of elements. Elements may be of any serializable type, and are separated by spaces:
+
+\begin{lstlisting}[numbers=none]
+LIST	= *(*OCTET / TIMESTAMP / UINT8 / UINT16 / UINT32 / UINT64 )
+\end{lstlisting}
+
+This identifier has implications for the serialization of data. Please refer to the serialization appendices for details and examples of serializations of the data types throughout this document: \ref{rlp}
 

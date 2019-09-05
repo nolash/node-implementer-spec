@@ -3,6 +3,7 @@
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \usepackage{listings}
 \usepackage[T1]{fontenc}
+\usepackage{nameref}
 \lstset{
 	basicstyle=\footnotesize,
 	numbers=left,

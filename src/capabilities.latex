@@ -1,0 +1,13 @@
+\subsection{Capabilities} \label{capabilities}
+
+Swarm nodes rely on the underlying transport to negotiate which protocols the node understands. If a protocol name and version pair matches, the protocol execution loop must be started.
+
+Additionally, the \texttt{Capabilities} mechanism enables peers to communicate additional detail about what features within the modules the protocols represent are enabled, and how they work. It is up to individual modules running in the node to determine whether and how differences in \texttt{Capabilities} cause incompatibilities.
+
+\texttt{Capabilities} are transmitted as collections of key-value pairs of numerical id and bitvectors. They are included in the bzz handshake protocol. \ref{paragraph:bzz-handshake}
+
+\begin{lstlisting}[numbers=none]
+CAPABILITYID	= UINT64
+CAPABILITY	= LIST(LIST(CAPABILITYID *8BIT))
+CAPABILITIES	= LIST(LIST(*CAPABILITY))
+\end{lstlisting}

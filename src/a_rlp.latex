@@ -4,7 +4,7 @@ Swarm protocols require a p2p transport protocol.
 
 At the time of writing, the Swarm reference implementation depends on the devp2p protocol, including its RLPX wire format and encryption scheme. \cite{ETHWIKI:RLP}  Detailing the concepts of \texttt{devp2p} and \texttt{RLP(X)} as such is out of scope of this document.
 
-Data payloads will be defined in ABNF format. Reference examples to verify the correct \texttt{RLP} encoded form of the data will also be included. \todo{appendix and refs to devp2p implementations}
+Data payloads will be defined in ABNF format. Reference examples to verify the correct \texttt{RLP} encoded form of the data will also be included. 
 
 We define the following mappings from ABNF data type definitions to RLP data types:
 
