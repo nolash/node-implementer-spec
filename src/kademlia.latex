@@ -1,3 +1,4 @@
+
 The Kademlia is both a database (DHT) of known and connected peers on the network, as well as a component for routing and forwarding content on the network.
 
 \subsection{Connectivity}
@@ -26,6 +27,10 @@ A Proximity Bin is the table row in the kademlia that contains all peers that ha
 
 As with the Proximity value itself, a \emph{closer} bin has a higher numeric value, and a \emph{farther} bin has a lower numeric value.
 
+\subsubsection{Neighborhood}
+
+The Neighborhood of a node are the peers in the two closest Proximity Bins in which peers are known to the node. 
+
 \subsubsection{Depth}
 
 The Depth of a node's kademlia is found by the following method:
@@ -36,10 +41,6 @@ The Depth of a node's kademlia is found by the following method:
 \item If found, the Depth is the numeric value of that bin plus one.
 \item If not found, the depth is $0$.
 \end{enumerate}
-
-\subsubsection{Neighborhood}
-
-The Neighborhood of a node are the peers in the two closest Proximity Bins in which peers are known to the node. 
 
 \subsubsection{Health}
 
@@ -95,17 +96,17 @@ By full address we mean that the recipient address contains the full 32 bytes of
 
 \subsection{Evaluating recipients}
 
-Any node receiving content has to evaluate whether itself can be the intended recipient, or one of the indended recipients, of the content.
+Any node receiving content has to evaluate whether it can be the intended recipient, or one of the indended recipients, of the content.
 
-The first condition that must be fulfilled is a matching recipient address on the content. Matching may happen in one of two forms.
+The first condition that must be fulfilled is a matching recipient address on the content. Matching may happen in one of two forms:
 
-\subsubsection{Literal matching}
+\paragraph{Literal matching}
 
 As described in \ref{sec:routing-with-full-address}, if the full 32-byte recipient address matches the node address, the node is the only intended recipient and \emph{MUST} process the content.
 
 If the recipient address is a partial address, and it matches the node address, the node \emph{may} be one of the intended recipients and \emph{MUST} process the content.
 
-\subsubsection{Proximity matching}
+\paragraph{Proximity matching}
 
 This method provides a way to send content with a full 32 byte recipient address to more than one recipient.\footnote{This is the matching method used for the \emph{Push Sync} feature, where content addressed chunks are routed to their neighborhood in the network.} The procedure is as follows.
 
