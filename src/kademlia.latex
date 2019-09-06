@@ -25,7 +25,7 @@ For example, an address $0101$ will have a Proximity Order of $0$ compared to $1
 
 A Proximity Bin is the table row in the kademlia that contains all peers that have the corresponding proximity to the node. \ref{sec:distance-and-proximity}
 
-As with the Proximity value itself, a \emph{closer} bin has a higher numeric value, and a \emph{farther} bin has a lower numeric value.
+As with the Proximity Order, a \emph{closer} Proximity Bin has a higher numeric value, and a \emph{farther} Proximity Bin has a lower numeric value.
 
 \subsubsection{Neighborhood}
 
