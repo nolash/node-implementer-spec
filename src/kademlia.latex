@@ -1,6 +1,14 @@
 
 The Kademlia is both a database (DHT) of known and connected peers on the network, as well as a component for routing and forwarding content on the network.
 
+\subsection{Records}
+
+A peer record \emph{ALWAYS} contains the \texttt{Address Pair} and the \texttt{Capabilities} of the peer. This data structure is known as the \texttt{BzzAddress}. It serializes as follows:
+
+\begin{lstlisting}[numbers=none]
+BZZADDRESS = LIST(OVERLAYADDRESS UNDERLAYADDRESS CAPABILITIES)
+\end{lstlisting}
+
 \subsection{Connectivity}
 
 \subsubsection{Address matching} \label{address-matching}

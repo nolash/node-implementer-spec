@@ -1,6 +1,6 @@
 \subsection{bzz protocol}
 
-\subsubsection{handshake}
+\subsubsection{Handshake}
 
 The bzz handshake is the first message to be exchanged between peers after the p2p transport protocol has been successfully negotiated. After the handshake each peer should remember the following data about the other:
 
@@ -9,7 +9,7 @@ The bzz handshake is the first message to be exchanged between peers after the p
 \item What \texttt{Capabilities} the peer has advertised \ref{capabilities}
 \end{itemize}
 
-\paragraph{message} \label{paragraph:bzz-handshake}
+\paragraph{Message} \label{paragraph:bzz-handshake}
 
 The handshake message consists of four data fields:
 
@@ -21,7 +21,7 @@ Address data	= ADDRESSPAIR
 Capabilities	= CAPABILITIES
 \end{lstlisting}
 
-\paragraph{procedure}
+\paragraph{Procedure}
 
 Upon connection, the \emph{peer who initiated the connection} sends a handshake message to the other. If a more than one handshake is received from the same peer, the connection \emph{MUST} be dropped.
 
