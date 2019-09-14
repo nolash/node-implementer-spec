@@ -37,9 +37,15 @@
 
 \input{kademlia.latex}
 
+\section{Hive} \label{hive}
+
+\input{hive.latex}
+
 \section{Protocols} \label{protocols}
 
 \input{proto_bzz.latex}
+
+\input{proto_discovery.latex}
 
 \input{proto_pss.latex}
 
