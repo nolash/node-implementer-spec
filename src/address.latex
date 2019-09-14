@@ -1,10 +1,12 @@
 \subsection{Swarm Overlay Address} \label{address}
 
-Swarm addresses all content and all nodes with 32-byte hashes. A node address is called its Swarm Overlay Address. It is derived from the public key of the Ethereum account used to operate the node.\cite[section 9.1]{SWARMGUIDE}
+Swarm addresses all content and all nodes using algorithms designed around its \texttt{Base Hash}.
 
-To obtain the Swarm Overlay Address, hash the \emph{uncompressed} form of the public key, \emph{including} its $04$ (uncompressed) prefix, using the KECCAK256 hashing algorithm. \cite[network/network.go:68]{SWARMCODE} \cite[p. 78]{MASTERINGBITCOIN} \cite{KECCAK} 
+A node address is called its \texttt{Swarm Overlay Address}. It is derived from the \texttt{ECDSA Public Key} of the Ethereum account used to operate the node.\cite[section 9.1]{SWARMGUIDE}
 
-Formally we define the Swarm Overlay Address thus:
+To obtain the \texttt{Swarm Overlay Address}, calculate the \texttt{Base Hash} of the \emph{uncompressed} form of the \texttt{ECDSA Public Key}, \emph{including} its $04$ (uncompressed) prefix. \cite[network/network.go:68]{SWARMCODE}
+
+Formally we define the \texttt{Swarm Overlay Address} thus:
 
 \begin{lstlisting}[numbers=none]
 OVERLAYADDRESS = 32*(%x00-ff)
@@ -12,7 +14,7 @@ OVERLAYADDRESS = 32*(%x00-ff)
 
 \subsubsection{Swarm Address Pair} \label{address-pair}
 
-To enable peers to locate the a node on the network, the aforementioned Swarm Overlay Address is paired with an Underlay Address.
+To enable peers to locate the a node on the network, the aforementioned \texttt{Swarm Overlay Address} is paired with an Underlay Address.
 
 The Underlay Address is a string representation of the node's network location on the underlying transport layer, and \emph{MUST} contain sufficient data to enable peers to initiate new connections to the node.
 
@@ -20,4 +22,3 @@ The Underlay Address is a string representation of the node's network location o
 UNDERLAYADDRESS = VCHAR
 ADDRESSPAIR=2#2list(OVERLAYADDRESS UNDERLAYADDRESS)
 \end{lstlisting}
-

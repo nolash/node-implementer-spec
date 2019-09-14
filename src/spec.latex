@@ -29,9 +29,15 @@
 
 \section{Fundamentals}
 
+\input{hash.latex}
+
 \input{address.latex}
 
 \input{capabilities.latex}
+
+\section{Data Storage}
+
+\input{chunk.latex}
 
 \section{Kademlia} \label{kademlia}
 
