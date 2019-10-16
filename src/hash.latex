@@ -1,0 +1,3 @@
+\subsection{Base Hash}
+
+Swarm uses \texttt{KECCAK} with the \texttt{SHA3\_256} parameter preset as its \texttt{Base Hash} algorithm. \texttt{KECCAK256} has a digest size of 32 bytes. \cite[p. 78]{MASTERINGBITCOIN} \cite{KECCAK} 

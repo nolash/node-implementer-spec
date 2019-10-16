@@ -1,6 +1,6 @@
 \subsection{Swarm Overlay Address} \label{address}
 
-Swarm addresses all content and all nodes using algorithms designed around its \texttt{Base Hash}.
+Swarm addresses all content\footnote{See \ref{sec:chunk-reference} for content addressed data} and all nodes using the \texttt{Base Hash} directly, or algorithms employing multiple \texttt{Base Hash} operations.
 
 A node address is called its \texttt{Swarm Overlay Address}. It is derived from the \texttt{ECDSA Public Key} of the Ethereum account used to operate the node.\cite[section 9.1]{SWARMGUIDE}
 
@@ -14,9 +14,9 @@ OVERLAYADDRESS = 32*(%x00-ff)
 
 \subsubsection{Swarm Address Pair} \label{address-pair}
 
-To enable peers to locate the a node on the network, the aforementioned \texttt{Swarm Overlay Address} is paired with an Underlay Address.
+To enable peers to locate the a node on the network, the aforementioned \texttt{Swarm Overlay Address} is paired with a \texttt{Swarm Underlay Address}.
 
-The Underlay Address is a string representation of the node's network location on the underlying transport layer, and \emph{MUST} contain sufficient data to enable peers to initiate new connections to the node.
+The \texttt{Swarm Underlay Address} is a string representation of the node's network location on the underlying transport layer, and \emph{MUST} contain sufficient data to enable peers to initiate new connections to the node.
 
 \begin{lstlisting}[numbers=none]
 UNDERLAYADDRESS = VCHAR
