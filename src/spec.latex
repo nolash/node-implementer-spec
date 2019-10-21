@@ -15,7 +15,7 @@
 }
 \setcounter{secnumdepth}{4}
 
-\date{\today\\ v0.3}
+\date{\today\\ v0.3.2}
 
 \author{lash}
 \title{Swarm node implementer's specification}

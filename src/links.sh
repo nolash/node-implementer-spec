@@ -42,7 +42,7 @@ IFS=$(printf '\n')
 c=0
 for k in ${blockkeys[@]}; do
 	v=${block[c]}
-	v=$(echo $v | sed -e 's/\//\\\\\\\//g') # remove forward slashes in bibliography value
+	v=$(echo $v | sed -e 's/\//\\\//g') # remove forward slashes in bibliography value
 	r="s/\\\\cite{$k}/\\\\footnote{$v}/" # convert to footnote (we discard the square bracket comment for now
 	sed $f -i -e "$r" # do the substitution
 	r="s/\\\\cite\[.*\]{$k}/\\\\footnote{$v}/" # convert to footnote (we discard the square bracket comment for now

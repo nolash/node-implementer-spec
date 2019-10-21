@@ -8,7 +8,8 @@ OIFS=$IFS
 IFS=$(printf '\n')
 c=0
 while read l; do
-	if [[ "$l" =~ ^[[:space:][:space:][:space:][:space:]] ]]; then
+	if [[ "$l" =~ ^[[:space:][:space:][:space:][:space:]].*=.* ]]; then
+		>&2 echo "starting new on $l"
 		if [ "$searching" -gt 0 ]; then
 			searching=0
 		fi
