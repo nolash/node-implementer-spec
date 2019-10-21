@@ -4,7 +4,7 @@ This document uses the \texttt{ABNF} convention for defining data types, as desc
 
 \subsubsection{Primitives}
 
-The basic identifiers are defined as follows:
+The basic identifiers are defined as follows\footnote{Numeric values are $2^n-1$}
 
 \begin{lstlisting}[numbers=none]
 UINT64MAX	= 18446744073709551615

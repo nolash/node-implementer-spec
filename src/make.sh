@@ -6,11 +6,12 @@ if [ ! -f ${base}.latex ]; then
 fi
 sh gentex.sh ${base}.latex
 
-tmp=$(mktemp --suffix=.latex)
->&2 echo tmpfile is ${tmp}
-cat header.latex > ${tmp}
-cat $base.latex.tex >> ${tmp}
-cat footer.latex >> ${tmp}
-pandoc -f latex -t gfm ${tmp} > md/${base}.md
-
-unlink ${tmp}
+tmp=$(mktemp)
+>&2 echo tmpfile is $tmp
+cat header.latex > $tmp
+cat ${base}.latex.tex >> $tmp
+cat footer.latex >> $tmp
+pandoc -f latex -t gfm $tmp > md/${base}.md
+sh abnf.sh md/${base}.md > $tmp
+cp $tmp md/${base}.md
+unlink $tmp
