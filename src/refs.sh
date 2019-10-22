@@ -15,7 +15,7 @@ IFS=$IFS_NL
 sedcmds=()
 crsr=0
 while read l; do
-	sedcmd=`echo -n $l | awk '{print "s/\\\[\\\[" $1 "\\\]\\\](#.*)/[" $1 "](https:\\\/\\\/github.com\\\/" $2 "\\\/tree\\\/" $3 "\\\/SWIPs\\\/swip-" $1 ".md)/"}'`
+	sedcmd=`echo -n $l | awk '{print "s/\\\[\\\[" $1 "\\\]\\\](#.*)/[" $1 "](https:\\\/\\\/github.com\\\/" $2 "\\\/SWIPs\\\/blob\\\/" $3 "\\\/SWIPs\\\/swip-" $1 ".md)/"}'`
 	swipno=`expr "$l" : '.* \([[:digit:]]*\)$'`
 	if [ $swipno -ne 0 ]; then
 		sedcmds[$crsr]=${sedcmd/swip-/swip-$swipno-}
