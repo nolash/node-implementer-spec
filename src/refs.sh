@@ -26,7 +26,7 @@ while read l; do
 done < swipdb.txt
 
 for c in ${sedcmds[@]}; do
-	echo "sed $f -i -e $c"
+	#echo "sed $f -i -e $c"
 	$(sed $f -i -e $c)
 done
 

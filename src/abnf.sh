@@ -12,11 +12,11 @@ IFS=$(printf '\n')
 c=0
 while read l; do
 	if [[ "$l" =~ ^[[:space:][:space:][:space:][:space:]].*=.* ]]; then
-		>&2 echo "starting new on $l"
-		if [ "$searching" -gt 0 ]; then
+		if [ $searching -ne 0 ]; then
+			>&2 echo "starting new on $l"
 			searching=0
 		fi
-		k=`expr "$l" : '^    \([A-Z0-9]*\) .*'`
+		k=`expr "$l" : '^    \([[:alnum:]]*\) .*'`
 		if [ ! -z "$k" ]; then
 			v=`expr "$l" : '.*= \(.*\)$'`
 			buf[$c]="| $k | $v |"

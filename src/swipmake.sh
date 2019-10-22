@@ -13,5 +13,6 @@ cat ${base}.latex.tex >> $tmp
 cat footer.latex >> $tmp
 pandoc -f latex -t gfm $tmp > md/${base}.md
 sh abnf.sh md/${base}.md > $tmp
+sh refs.sh $tmp
 cp $tmp md/${base}.md
 unlink $tmp

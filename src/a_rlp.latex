@@ -38,9 +38,9 @@ Consider a handshake message with the following arbitary values:
 
 \begin{lstlisting}[numbers=none]
 Version               42
-Network ID            622
-Address Data.OVERLAYADDRESS	134c2fdea53719022366b383bae4ae2e23f74d734a4f40170970b2910da851ee
-Address Data.UNDERLAYADDRES 	enode://0459783d8f54b3e684d2a6928e4d94a0c32570eb14fbecac9d07955c0a91eb3b5edce5ef23cff94250fb5591456d2d3f576315db146421d5e885675978fa59dff5
+NetworkID            622
+AddressData.OVERLAYADDRESS	134c2fdea53719022366b383bae4ae2e23f74d734a4f40170970b2910da851ee
+AddressData.UNDERLAYADDRES 	enode://0459783d8f54b3e684d2a6928e4d94a0c32570eb14fbecac9d07955c0a91eb3b5edce5ef23cff94250fb5591456d2d3f576315db146421d5e885675978fa59dff5
 Lightnode             1
 \end{lstlisting}
 

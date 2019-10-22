@@ -15,8 +15,8 @@ The handshake message consists of four data fields:
 
 \begin{lstlisting}[numbers=none]
 Version		= UINT64
-Network ID	= UINT64
-Address data	= ADDRESSPAIR
+NetworkID	= UINT64
+AddressData	= ADDRESSPAIR
 Capabilities	= CAPABILITIES
 \end{lstlisting}
 
@@ -24,4 +24,4 @@ Capabilities	= CAPABILITIES
 
 Upon connection, the \emph{peer who initiated the connection} sends a handshake message to the other. If more than one handshake is received from the same peer, the connection \emph{MUST} be dropped.
 
-The peers \emph{MUST} have the same \texttt{Version} and \texttt{Network ID}. If one or both of the fields don't match, the connection \emph{MUST} be dropped.
+The peers \emph{MUST} have the same \texttt{Version} and \texttt{NetworkID}. If one or both of the fields don't match, the connection \emph{MUST} be dropped.
