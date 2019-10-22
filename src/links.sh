@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# helper script for swipmake.sh
+# Converts latex citations to footnotes that can be handled by pandoc
+
 b='spec.bib'
 f=$1
 searching=1

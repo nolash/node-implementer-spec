@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# helper script for swipmake.sh
+# Changes ANBF listings to markdown tables, as requested by SWIP reviewers
+
 f=$1
 searching=1
 buf=()

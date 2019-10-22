@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# helper script for swipmake.sh
+# creates copies of either one single or all latex files to .tex file extension
+
 if [ ! -z $1 ]; then
 	>&2 echo "generating ${1}.tex"
 	cp $1 ${1}.tex

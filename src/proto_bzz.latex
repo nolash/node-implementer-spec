@@ -1,11 +1,11 @@
-\subsection{bzz protocol}
+\subsection{BZZ protocol}
 
 \subsubsection{Handshake}
 
-The bzz handshake is the first message to be exchanged between peers after the p2p transport protocol has been successfully negotiated. After the handshake each peer should remember the following data about the other:
+The bzz handshake is the first message to be exchanged between peers after the p2p transport protocol has been successfully negotiated. After the handshake a node should remember the following data about its peer:
 
 \begin{itemize}
-\item \texttt{Swarm Overlay Address} of the peer \ref{address}
+\item \texttt{Swarm Overlay Address} of the peer \ref{overlay-address}
 \item What \texttt{Capabilities} the peer has advertised \ref{capabilities}
 \end{itemize}
 
@@ -14,7 +14,6 @@ The bzz handshake is the first message to be exchanged between peers after the p
 The handshake message consists of four data fields:
 
 \begin{lstlisting}[numbers=none]
-
 Version		= UINT64
 Network ID	= UINT64
 Address data	= ADDRESSPAIR
@@ -23,6 +22,6 @@ Capabilities	= CAPABILITIES
 
 \paragraph{Procedure}
 
-Upon connection, the \emph{peer who initiated the connection} sends a handshake message to the other. If a more than one handshake is received from the same peer, the connection \emph{MUST} be dropped.
+Upon connection, the \emph{peer who initiated the connection} sends a handshake message to the other. If more than one handshake is received from the same peer, the connection \emph{MUST} be dropped.
 
 The peers \emph{MUST} have the same \texttt{Version} and \texttt{Network ID}. If one or both of the fields don't match, the connection \emph{MUST} be dropped.

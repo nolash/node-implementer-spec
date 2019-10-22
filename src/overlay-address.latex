@@ -1,4 +1,4 @@
-\subsection{Swarm Overlay Address} \label{address}
+\subsection{Swarm Overlay Address} \label{overlay-address}
 
 Swarm addresses all content\footnote{See \ref{sec:chunk-reference} for content addressed data} and all nodes using the \texttt{Base Hash} directly, or algorithms employing multiple \texttt{Base Hash} operations.
 

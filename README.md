@@ -21,3 +21,19 @@ bibtex spec
 pdflatex spec.latex
 pdflatex spec.latex
 ```
+
+## SWIP generation
+
+First `cd $REPO/src`
+
+Then generate the SWIP markdown from an individual chapter. If the chapter filename is `data.latex`, the command to generate the markdown is `sh make.sh data`. Markdown file will be named `data.md` and will reside in the `md` subdirectory. The script performs the following steps:
+
+* convert latex citations to footnotes [1] 
+* copy latex file to file with .tex suffix
+* wraps the chapter in generic SWIP template header and footer 
+* generates github markdown with pandoc 
+* converts ABNF listings to tables
+
+Lastly, merge the generated SWIP with the existing one. This preserves the metadata header at the top of the document. The command to merge is `sh swipmerge.sh md/data.md <swipfile>`
+
+1.  `pandoc` can handle footnotes, but not citations
