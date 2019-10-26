@@ -1,11 +1,11 @@
 
-The Kademlia is both a database (DHT) of known and connected peers on the network, as well as a routing table for content and requests.
+The Kademlia is both a Distributed Hash Table (DHT) of known and connected peers on the network, as well as a routing table for content and requests. 
 
 The Swarm implementation of Kademlia provides the usual guarantees of logarithmic proportions in connectivity in routing. \cite{KADEMLIA}
 
 \subsection{Records}
 
-A peer record \emph{ALWAYS} contains the \texttt{Address Pair} and the \texttt{Capabilities} of the peer. This data structure is known as the \texttt{BzzAddress}. It serializes as follows:
+A peer record \emph{MUST} contain the \texttt{Address Pair} and the \texttt{Capabilities} of the peer. This data structure is known as the \texttt{BzzAddress}. It serializes as follows:
 
 \begin{lstlisting}[numbers=none]
 BZZADDRESS = LIST(OVERLAYADDRESS UNDERLAYADDRESS CAPABILITIES)
@@ -27,7 +27,7 @@ The \emph{Distance} between two addresses is the value of the big-endian binary 
 
 For example, the distance between the addresses 1010 and 0111 will be $1011 ^ 0111 = 1100$, where the big-endian binary integer cast of $1100$ is $12$.
 
-Another measure of difference \emph{Proximity}, which is the logarithmic distance between the addresses. Specifically we define the Proximity Order, which is index value of the most significant bit that differs between the two addresses.
+Another measure of difference \emph{Proximity}, which is the logarithmic distance between the addresses. Specifically we define the \texttt{Proximity Order}, which is index value of the most significant bit that differs between the two addresses.
 
 For example, an address $0101$ will have a Proximity Order of $0$ compared to $1101$, a proximity Order of $1$ compared to $0011$, and a Proximity Order of $3$ compared to $0110$. \cite[p. 2]{SWARMNETWORK}
 
@@ -63,7 +63,7 @@ A kademlia is healthy when:\footnote{Note that it is technically possible for a 
 
 \subsection{Content forwarding}
 
-The rules for content forwarding apply to \emph{all} nodes on the content route. In this document we refer to these nodes \emph{relaying nodes}. This includes the \emph{sender} and any \emph{receiver} nodes.
+The rules for content forwarding apply to \emph{all} nodes on the content route. In this document we refer to these nodes \texttt{relaying nodes}. This includes the \emph{sender} and any \emph{receiver} nodes.
 
 A node \emph{MUST} always forward content\footnote{This is done to make it more difficult to determine the true recipient of a message by traffic analysis}, \emph{unless} one of these criteria are fulfilled:
 

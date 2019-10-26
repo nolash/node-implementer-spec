@@ -2,11 +2,11 @@
 
 Nodes get new peers relevant to them by advertising their \texttt{Saturation Depth}.
 
-A node informs its peers about its \texttt{Saturation Depth} upon initial connection, aswell as every time the \texttt{Saturation Depth} changes.
+A node advertises its \texttt{Saturation Depth} to its peers upon initial connection, aswell as every time the \texttt{Saturation Depth} changes.
 
 This constitutes a \emph{subscription}, in which the peer should always share connection information for peers that are in the \texttt{Proximity Bin} corresponding to the \texttt{Saturation Depth} of the node \emph{or closer}.
 
-The Subscription message has the following format:
+The Subscription message, in which the \texttt{Saturation Depth} is advertised, has the following format:
 
 \begin{lstlisting}[numbers=none]
 DEPTH = LIST(UINT8)

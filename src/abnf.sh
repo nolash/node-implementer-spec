@@ -6,10 +6,23 @@
 f=$1
 searching=1
 buf=()
+c=0
+
+outputbuf() {
+	echo "| id | def |"
+	echo "| :--- | :---- |"
+	for e in ${buf[@]}; do
+		echo $e
+	done
+	echo
+	buf=()
+	searching=1
+	c=0
+
+}
 
 OIFS=$IFS
 IFS=$(printf '\n')
-c=0
 while read l; do
 	if [[ "$l" =~ ^[[:space:][:space:][:space:][:space:]].*=.* ]]; then
 		if [ $searching -ne 0 ]; then
@@ -23,17 +36,15 @@ while read l; do
 			c=$(($c+1))
 		fi
 	elif [ "$searching" -eq 0 ]; then
-		echo "| id | def |"
-		echo "| :--- | :---- |"
-		for e in ${buf[@]}; do
-			echo $e
-		done
-		echo
-		buf=()
-		searching=1
-		c=0
+		outputbuf
 	else
 		echo $l
 	fi	
 done < $f
+
+# catch edge case when table is end of file
+if [ "$searching" -eq 0 ]; then
+	outputbuf
+fi
+
 IFS=$OIFS

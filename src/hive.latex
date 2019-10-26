@@ -32,7 +32,7 @@ If the initial reconnection attempt fails, the node SHOULD exponentially increas
 
 \begin{enumerate}
 \item If more than 42 retries have been attempted, discard the peer and do not continue
-\item Caluculate the time delta that since last retry
+\item Caluculate the time delta since last retry
 \item Calculate the \emph{number of warranted retries} by subtracting $2$ from the $log_2$ of the time delta
 \item Retry if the \emph{number of warranted retries} is higher than the number of retries that has been made
 \end{enumerate}
